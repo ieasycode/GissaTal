@@ -1,0 +1,42 @@
+// Labb5GissaTal.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "time.h"
+
+
+int main()
+{	
+	int tal = 0;
+	int antal_variabler;
+	int nytt_tal;
+	char igen = 'j';
+	
+	srand((unsigned)time(NULL));
+	while ((igen == 'j') || (igen == 'J')) {
+		nytt_tal = rand() % 100 + 1;
+		printf("Datorn tnker p ett tal mellan 1 och 100. Varsgod at gissa:");
+		antal_variabler = scanf_s("%d", &tal);
+		getchar(); //tm radslutet efter scan
+		while (tal != nytt_tal) {
+			if (tal > nytt_tal)
+				printf("Talet r fr stort");
+			else printf("Talet r fr litet.");
+			printf("Gissa igen: ");
+			antal_variabler = scanf_s("%d", &tal);
+			getchar();			//tm radslutet efter scanf
+		}
+
+		printf("Rtt gissat\n Vill du gissa igen? (j/n): ");
+		igen = getchar();
+		getchar(); /* utan denna rad hoppar programmet ur consolefnstret nr du kr programmet, och du hinner inte se resultatet*/
+
+
+	}
+	
+	
+    return 0;
+}
+
